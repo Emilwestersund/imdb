@@ -1,0 +1,57 @@
+# Filmer
+
+Dette prosjektet er en webapplikasjon som lar brukere søke etter filmer og få anbefalinger basert på sjangeren til filmen de har søkt etter. Applikasjonen bruker OMDb API for å hente filmdata.
+
+## Hvordan det fungerer
+
+### 1. HTML-struktur
+
+- **`index.html`**: Dette er hovedfilen for applikasjonen. Den inneholder strukturen for brukergrensesnittet.
+
+  - **Input-felt**: Brukeren kan skrive inn en filmtittel.
+  - **Søkeknapp**: Når brukeren klikker på denne knappen, kalles `searchMovie`-funksjonen.
+  - **Visningsområder**:
+    - `#movie-search-info`: Viser informasjon om den søkte filmen.
+    - `#recommended-movies`: Viser anbefalte filmer basert på sjangeren til den søkte filmen.
+
+### 2. CSS-styling
+
+- **`styles.css`**: Denne filen inneholder stiler for å forbedre utseendet på applikasjonen.
+  - Grunnleggende styling for bakgrunn, knapper, input-felt, og filmkort.
+  - Animasjoner og overganger for interaktive elementer som knapper og filmkort.
+
+### 3. JavaScript-funksjonalitet
+
+- **`script.js`**: Inneholder all JavaScript-logikk for applikasjonen.
+
+  - **Variabler**:
+    - `apiKey`: Din OMDb API-nøkkel.
+    - `searchPhrases`: En liste over sjangre som brukes for å generere tilfeldige anbefalinger.
+
+  - **`DOMContentLoaded`**: Når dokumentet er lastet, kalles `getRandomRecommendedMovies` for å vise tilfeldige anbefalinger ved oppstart.
+
+  - **`searchMovie()`**: 
+    - Henter filmtittelen fra input-feltet.
+    - Gjør en forespørsel til OMDb API for å hente informasjon om filmen.
+    - Viser filmens detaljer (tittel, år, regissør, sjanger, handling) i `#movie-search-info`.
+    - Kaller `getRecommendedMovies` for å hente anbefalinger basert på sjangeren til filmen.
+
+  - **`getRecommendedMovies(genre, originalSearch)`**:
+    - Tar sjangeren fra den søkte filmen eller en tilfeldig sjanger hvis ingen sjanger er gitt.
+    - Gjør en forespørsel til OMDb API for å hente filmer i den sjangeren.
+    - Filtrerer bort den opprinnelige filmen fra anbefalingene og viser de første tre anbefalte filmene.
+
+  - **`getRandomRecommendedMovies()`**: 
+    - Genererer en tilfeldig sjanger og henter tre anbefalte filmer fra OMDb API ved oppstart.
+
+  - **`getRandomQuery()`**: 
+    - Velger en tilfeldig sjanger fra `searchPhrases` for bruk i tilfeldige anbefalinger.
+
+## Avhengigheter
+
+- Dette prosjektet bruker [OMDb API](https://www.omdbapi.com/) for å hente filmdata. Du må registrere deg for en API-nøkkel for å bruke applikasjonen.
+
+## Oppsummering
+
+Applikasjonen lar brukere enkelt søke etter filmer og få anbefalinger, med et brukervennlig grensesnitt og en responsiv design. Koden er strukturert for å være lett forståelig, og den kan videreutvikles med flere funksjoner som filtrering, vurderinger, og mer.
+
